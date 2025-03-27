@@ -1,43 +1,43 @@
-name: 部署 README 到 GitHub Pages
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
+  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: 安装 Pandoc
-        run: sudo apt-get update && sudo apt-get install -y pandoc
-
-      - name: 将 README.md 转换为 index.html
-        run: pandoc README.md -f markdown -t html -s -o index.html --metadata title="✨ 最新Claude Pro订阅教程：国内如何访问Claude？国内如何顺畅使用Claude？如何购买Claude Pro会员帐号？国内超赞Claude镜像推荐"
-
-      - name: 设置 Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: 上传产物
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Upload entire repository
           path: '.'
-
-      - name: 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
