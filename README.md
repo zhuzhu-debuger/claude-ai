@@ -1,7 +1,5 @@
 # ✨ 最新Claude Pro订阅教程：国内如何访问Claude？国内如何顺畅使用Claude？如何购买Claude Pro会员帐号？国内超赞Claude镜像推荐✨
 
-<p align="center">📅 最近更新于：2025年3月18日</p>
-
 ---
 
 ## 🌟 Claude是什么？Claude有次数限制？Claude Pro是什么？Claude Pro怎么样？
